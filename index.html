@@ -9,6 +9,49 @@
         .shower {
             --slide-ratio: calc(16 / 9);
         }
+
+        .slide::after {
+            height: auto;
+            background-color: #6b57ff;
+            background-image: none;
+            border-radius: 50%;
+            top: 20px;
+            left: 940px;
+            padding-top: 0;
+            font-size: 16px;
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        a {
+            color: #6b57ff !important;
+        }
+
+        .progress::before {
+            background-color: #6b57ff;
+        }
+
+        .middle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 60px !important;
+        }
+
+        h2.middleText {
+            font-size: 60px;
+            text-align: center;
+            margin-top: 0;
+        }
     </style>
 </head>
 <body class="shower list">
@@ -19,18 +62,40 @@
     </header>
 
     <section class="slide" id="cover">
-        <h2>Shower Presentation Engine</h2>
-        <p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+        <div class="plashka">
+            <h2>How does Randolor work?</h2>
+            <div class="text">
+                <p>Katia Trifonova</p>
+                <p>Computuational Arts Initiative</p>
+                <img src="pictures/cai.svg" class="goose" alt="goose">
+            </div>
+
+        </div>
+
         <figure>
-            <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
+            <img class="codebg cover" src="pictures/cover.png" alt="Minified code">
         </figure>
         <style>
+            .goose {
+                width: 50px;
+                margin-top: 20px;
+                display: block;
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #cover.slide::after {
+                visibility: hidden;
+            }
+
             #cover h2 {
                 margin: 30px 0 0;
-                color: white;
+                color: #fff;
                 text-align: center;
                 font-size: 70px;
             }
@@ -38,164 +103,438 @@
             #cover p {
                 margin: 10px 0 0;
                 text-align: center;
-                color: white;
-                font-style: italic;
+                color: #fff;
+                font-size: 28px;
+                margin-top: 0;
+                margin-bottom: -10px;
+            }
+
+            .plashka {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: calc(100% - 75px);
+            }
+
+            .codebg {
+                width: 100%;
+                filter: blur(1px) brightness(50%);
+            }
+
+        </style>
+    </section>
+
+    <section class="slide" id="interface">
+        <figure>
+            <img class="interface cover" src="pictures/interface.png" alt="interface">
+        </figure>
+        <style>
+            .interface {
+                width: 100%;
+            }
+            #interface.slide::after {
+                left: 50px;
+            }
+        </style>
+
+    </section>
+
+    <section class="slide middle">
+        <h2 class="jstitle">Built with</h2>
+        <h2 class="jswrap"><img class="js" src="pictures/js.svg" alt="js logo">    +   <img class="p5js" src="pictures/p5js.svg" alt="p5js logo"></h2>
+
+        <style>
+            .jstitle {
+                font-size: 100px !important;
+            }
+            .js {
+                width: 200px;
+            }
+
+            .js, .p5js {
+                margin: 0 50px;
+            }
+            .jswrap {
+                font-size: 100px !important;
+                margin-top: 0 !important;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        </style>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">The character is a JavaScript object</h2>
+    </section>
+
+    <section class="slide">
+        <figure>
+            <img class="object" src="pictures/object.png" alt="object of randolor">
+        </figure>
+        <style>
+            .object {
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        </style>
+
+    </section>
+
+    <section class="slide">
+        <figure>
+            <img class="object" src="pictures/methods.png" alt="object of randolor">
+        </figure>
+        <style>
+            .object {
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        </style>
+
+    </section>
+
+    <section class="slide">
+        <img class="p5logo" src="pictures/p5js.svg" alt="p5js logo">
+        <ul class="p5list">
+            <li>a JavaScript library for creative coding</li>
+            <li>similar to Processing</li>
+            <li>easy to work with</li>
+        </ul>
+        <style>
+            .p5logo {
+                margin-bottom: 20px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Just two essential functions</h2>
+        <ul>
+            <li>setup()</li>
+            <li>draw()</li>
+        </ul>
+        <p class="next">which are enough to draw something 👩🏻‍🎨</p>
+    </section>
+
+    <section class="slide">
+        <h2>setup()</h2>
+        <ul>
+            <li>called once when the program starts</li>
+            <li>defines initial environment properties</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <pre>
+            <code>function setup(){</code>
+            <code>    noLoop();                <span class="comment">// prevent infinite loop</span></code>
+            <code>    angleMode(DEGREES);      <span class="comment">// set degrees instead of radians</span></code>
+            <code>    rectMode(CENTER);        <span class="comment">// calculate rectangles from their centers</span></code>
+            <code>    pixelDensity(2);         <span class="comment">// set resolution</span></code></code>
+            <code>    calculateValues();       <span class="comment">// calculate all the sizes</span></code></code></code></code>
+            <code>    createCanvas(ww, hh);    <span class="comment">// initialize an artboard</span></code></code></code>
+            <code>    <mark>person = new Person();</mark>   <span class="comment">// initialize a character</span></code></code></code>
+            <code>    setGui();                <span class="comment">// initialize the interface</span></code></code></code>
+            <code>}</code>
+        </pre>
+
+        <style>
+            code {
                 font-size: 20px;
             }
 
-            #cover p a {
-                color: white;
-            }
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Shower key features</h2>
-        <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-    </section>
 
     <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-    </section>
-
-    <section class="slide">
-        <h2>Two columns if you like</h2>
-        <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <h2>All kind of lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
-    </section>
-
-    <section class="slide">
-        <h2>Serious citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide">
-        <h2>Code samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
+        <h2>draw()</h2>
+        <ul>
+            <li>called directly after setup()</li>
+            <li>applies updates to the program</li>
+        </ul>
+        <pre class="next">
+            <code>function draw() {</code>
+            <code>    <mark>person.display();</mark>    <span class="comment">// render a character</span></code>
+            <code>}</code>
         </pre>
     </section>
 
-    <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
+
+    <section  class="slide display">
+         <pre>
+             <code>function Person() {</code>
+             <code>    ...</code>
+             <code>    <mark>this.display</mark> = () => {</code>
+             <code>        clear();              <span class="comment">// clear canvas from previous renders</span></code>
+             <code>        this.drawHair();      <span class="comment">// draw the character part by part</span></code>
+             <code>        this.drawHead();</code>
+             <code>        this.drawFace();</code>
+             <code>        this.drawTopHair();</code>
+             <code>        this.drawLegs();</code>
+             <code>        this.drawShoes();</code>
+             <code>        this.drawArms();</code>
+             <code>        this.drawBody();</code>
+             <code>    }</code>
+             <code>}</code>
+        </pre>
+
+        <style>
+            .display code {
+                font-size: 16px;
+            }
+        </style>
     </section>
 
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
+    <section  class="slide hair">
+         <pre>
+             <code>function Person() {</code>
+             <code>    ...</code>
+             <code>    this.drawHair = () => {</code>
+             <code>        ...</code>
+             <code>        <mark>fill</mark>(color(this.skinTone));</code>
+             <code>        <mark>stroke</mark>(color(this.borderTone));</code>
+             <code>        <mark>strokeWeight</mark>(microModule);</code>
+             <code>        <mark>ellipse</mark>(headPos.x, headPos.y - headSize / 2, headSize, headSize);</code>
+             <code>        ...</code>
+             <code>    }</code>
+             <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">How the body parts are arranged?</h2>
+    </section>
+
+    <section class="slide pointsbg">
         <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
+            <img class="points cover" src="pictures/points.png" alt="points">
         </figure>
         <style>
-            #picture h2 {
-                color: white;
+            .points {
+                width: 100%;
+            }
+
+            .pointsbg {
+                background-color: #000;
             }
         </style>
     </section>
 
-    <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
+    <section  class="slide hair">
+         <pre>
+             <code>function Person() {</code>
+             <code>    ...</code>
+             <code>    this.drawHair = () => {</code>
+             <code>        ...</code>
+             <code>        fill(color(this.skinTone));</code>
+             <code>        stroke(color(this.borderTone));</code>
+             <code>        strokeWeight(microModule);</code>
+             <code>        ellipse(<mark>headPos.x</mark>, <mark>headPos.y</mark> - headSize / 2, headSize, headSize);</code>
+             <code>        ...</code>
+             <code>    }</code>
+             <code>}</code>
+        </pre>
     </section>
 
-    <section class="slide">
-        <h2>Inner navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
+    <section class="slide middle">
+        <h2 class="middleText">How do we calculate the sizes?</h2>
     </section>
 
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
-        </h2>
+    <section  class="slide hair">
+         <pre>
+             <code>function Person() {</code>
+             <code>    ...</code>
+             <code>    this.drawHair = () => {</code>
+             <code>        ...</code>
+             <code>        fill(color(this.skinTone));</code>
+             <code>        stroke(color(this.borderTone));</code>
+             <code>        strokeWeight(<mark>microModule</mark>);</code>
+             <code>        ellipse(headPos.x, headPos.y - <mark>headSize</mark> / 2, <mark>headSize</mark>, <mark>headSize</mark>);</code>
+             <code>        ...</code>
+             <code>    }</code>
+             <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">Designed with a modular approach</h2>
+        <h2 class="middleText">↓</h2>
+        <h2 class="middleText">Consistency</h2>
+        <h2 class="middleText next">Easy to scale</h2>
+    </section>
+
+
+    <section class="slide sizes">
+        <pre>
+            <code>let modulus = 12,                 <span class="comment">// 12 basic module </span></code>
+            <code>    microModule = modulus / 6,    <span class="comment">// 2</span></code>
+            <code>    eyeWidth = microModule,       <span class="comment">// 2</span></code></code>
+            <code>    eyeHeight = modulus / 2,      <span class="comment">// 4</span></code></code>
+            <code>    earSize = modulus,            <span class="comment">// 12</span></code></code>
+            <code>    fingerWidth = modulus * 2,    <span class="comment">// 24</span></code></code>
+            <code>    headSize = modulus * 4,       <span class="comment">// 48</span></code></code>
+            <code>    shoulderSize = modulus * 8,   <span class="comment">// 96</span></code></code>
+            <code>    ...</code>
+        </pre>
+
         <style>
-            #see-more h2 {
-                font-size: 100px
-            }
-
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
+            .sizes code {
+                font-size: 24px;
             }
         </style>
     </section>
+
+
+    <section class="slide">
+            <figure>
+                <img class="mockup" src="pictures/mockup.jpg" alt="modular scheme of randolor">
+            </figure>
+        <style>
+            .mockup {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        </style>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">Why Randolor anyway?</h2>
+    </section>
+
+    <section class="slide">
+        <figure>
+            <img class="modulor" src="pictures/modulor.jpg" alt="modulor">
+            <figcaption class="mod-caption"><span>Modulor</span><span>Charles-Édouard Jeanneret a.k.a. Le Corbusier (1887–1965)</span></figcaption>
+        </figure>
+        <style>
+            .modulor {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+
+            .mod-caption {
+                font-size: 14px;
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">Randolor = Math.random() + Modulor</h2>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="middleText">How do we make magic?</h2>
+        <h2 class="middleText">✨🦄🧚🏻‍♀️✨</h2>
+    </section>
+
+    <section class="slide">
+        <h2>random()</h2>
+        <ul>
+            <li>an extended equivalent of Math.random() in p5.js</li>
+            <li>picks a random value from a list or range</li>
+            <li>we apply random values to parameters of the character</li>
+            <li>and get unexpected and often amazing combinations</li>
+        </ul>
+    </section>
+
+
+    <section class="slide grey">
+        <figure>
+            <img class="interface cover" src="pictures/001.png" alt="interface">
+        </figure>
+        <style>
+            .grey {
+                background-color: #ccc;
+            }
+        </style>
+    </section>
+    <section class="slide grey">
+        <figure>
+            <img class="interface cover" src="pictures/002.png" alt="interface">
+        </figure>
+    </section>
+    <section class="slide grey">
+        <figure>
+            <img class="interface cover" src="pictures/003.png" alt="interface">
+        </figure>
+    </section>
+    <section class="slide grey">
+        <figure>
+            <img class="interface cover" src="pictures/004.png" alt="interface">
+        </figure>
+    </section>
+    <section class="slide grey">
+        <figure>
+            <img class="interface cover" src="pictures/005.png" alt="interface">
+        </figure>
+    </section>
+
+    <section  class="slide">
+         <pre>
+             <code>this.makeMagic = () => {</code>
+             <code>    this.hairStyle = <mark>random([ 'wavy', 'kichka', 'short' ]);</mark></code>
+             <code>    this.shoeStyle = <mark>random([ 'basic', 'boots', 'trendy' ]);</mark></code>
+             <code>    ...</code>
+             <code>    this.leftHandAngle = <mark>random(minHandAngle, maxHandAngle);</mark></code>
+             <code>    this.rightHandAngle = <mark>random(minHandAngle, maxHandAngle);</mark></code>
+             <code>    ...</code>
+             <code>    this.shoesTone = <mark>random(Object.values(clothesPalette));</mark></code>
+             <code>    this.skinTone = <mark>random(Object.values(skinPalette));</mark></code>
+             <code>    ...</code>
+             <code>}</code>
+        </pre>
+    </section>
+
+<!--    <section class="slide middle">-->
+<!--        <h2>Collaborating with the computer is fun</h2>-->
+<!--    </section>-->
+
+    <section class="slide middle">
+        <h2>Try yourself! 🙂</h2>
+    </section>
+
+    <section class="slide middle">
+        <h2 class="slides">Slides</h2>
+        <h2><a href="https://visualmagical.github.io/randolor/">visualmagical.github.io/randolor</a></h2>
+        <style>
+            h2.slides {
+                margin-bottom: 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide bye-slide">
+        <h2>Thanks!</h2>
+        <h2><a href="https://randolor.labs.jb.gg/">Randolor</a></h2>
+        <h2><a href="https://jetbrains.team/p/genart/code/randolor/files/README.md">Source code</a></h2>
+        <figure>
+            <img class="bye" src="pictures/bye.gif" alt="bye">
+        </figure>
+
+        <style>
+            .bye {
+                right: 0;
+                top: 300px;
+                position: absolute;
+                width: 40%;
+            }
+        </style>
+    </section>
+
 
     <footer class="badge">
         <a href="https://github.com/shower/shower">Fork me on GitHub</a>
